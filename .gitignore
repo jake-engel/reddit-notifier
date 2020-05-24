@@ -1,0 +1,10 @@
+# Environment Variables
+.env
+
+# Dependencies
+node_modules/
+
+# Compiled files
+dist/
+
+.DS_Store
