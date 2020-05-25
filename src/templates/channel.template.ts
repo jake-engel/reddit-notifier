@@ -1,8 +1,9 @@
-import channelItem from './channel-item.template';
+import channelItemTemplate from './channel-item.template';
+import { User } from '../entities/user.entity';
+import { SubredditItem } from '../interfaces/subreddit-item.interface';
 
-export default `
+export default (user: User, data: SubredditItem[]) => `
   <div>
-    Channel Title here
-    ${channelItem}
+    ${data.reduce((str, dataItem) => str + channelItemTemplate(dataItem), '')}
   </div>
 `;

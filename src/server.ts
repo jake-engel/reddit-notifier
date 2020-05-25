@@ -45,6 +45,8 @@ const initializeAndStartApplication = async () => {
   const dailyEmailJob = Container.get(DailyEmailJob);
   dailyEmailJob.startConsumer();
 
+  // TODO: Setup logging middleware
+
   // Include all public routes. Private routes would need to undergo
   //     authentication and token parsing middleware
   app.use('/', await redditNotifierRoutes.fetchPublicRoutes());

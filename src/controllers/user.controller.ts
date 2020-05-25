@@ -44,6 +44,7 @@ export class UserController {
         return;
       }
 
+      // Fetch top posts from subreddit for user
       const topPosts = (
         await Promise.all(
           user.subreddits.map(
@@ -52,12 +53,14 @@ export class UserController {
         )
       ).filter(({ data }) => !!data.length);
 
-      const emailResponse = await this.messagingService.sendEmail(
-        user,
-        topPosts,
-      );
+      const { error } = await this.messagingService.sendEmail(user, topPosts);
+      if (!!error) {
+        res.status(error.status || 400).send(error.response.body);
+        return;
+      }
 
-      res.status(200).send(emailResponse);
+      res.status(200).send(true);
+      return true;
     } catch (err) {
       console.log(`err => `, err);
       res.status(err.status || 400).send({ error: err.message });
