@@ -8,4 +8,5 @@ Steps to start repository:
     - TYPEORM_PASSWORD: password for postgres db login
     - TYPEORM_DATABASE: name of postgres db
     - SENDGRID_API_KEY: API key for the sendgrid API
+    - SQS_DAILY_EMAIL_EVENT_URL: URL for the SQS queue in order to receive 8am daily message
 4) Run `npm run start_local` to start server in localhost
